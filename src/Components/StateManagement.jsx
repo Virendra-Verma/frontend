@@ -30,9 +30,9 @@ const StateManagement = () => {
         <button onClick={()=>{count++; console.log(count);}}>Add Count</button>
         <h1>Likes :{Likes}</h1>
         <button className='btn btn-primary me-3'onClick={()=>{setLikes(Likes+1)}}>Add Likes</button>
-        <button className='btn btn-primary'onClick={()=>{setLikes(Likes-1)}}>Add DisLikes</button>
+        <button className='btn btn-primary me-3'onClick={()=>{setLikes(Likes-1)}}>Add DisLikes</button>
         <input type='file' onChange={selectFile}/>
-        <img src={ImgUrl} alt='' style={{width: '40vw',hight:'40vh'}}/>
+        <img src={ImgUrl} alt='' style={{width: '50vw',hight:'50vh'}}/>
         </div>
         
     </div>
