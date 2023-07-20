@@ -8,3 +8,40 @@
   color: red !important;
   border-bottom: 2px solid red;
 }
+.login{
+  width: 300px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 1px solid #f34f4f;
+  border-radius: 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(214, 232, 249);
+}
+.email{
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+.username{
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+.email{
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+.sumbit{
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #ea8b8b;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.sumbit:hover{
+  background-color: #0056b3;
+}
