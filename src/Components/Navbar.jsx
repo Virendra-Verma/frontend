@@ -52,6 +52,16 @@ const Navbar = () => {
             Todo
           </NavLink>
         </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/Chat">
+            Chat
+          </NavLink>
+        </li>
+        <li className="nav-item">
+          <NavLink className="nav-link" to="/Broeser">
+            Brower
+          </NavLink>
+        </li>
         <li className="nav-item dropdown">
           <a
             className="nav-link dropdown-toggle"

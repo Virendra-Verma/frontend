@@ -9,13 +9,15 @@ import EventHandling from './Components/EventHandling';
 import StateManagement from './Components/StateManagement';
 import Todo from './Components/Todo';
 
+import Chat from './Components/Chat';
+import Browser from './Components/Browser';
+
+
 function App() {
   return (
     <div> 
        <BrowserRouter>
-       <Navbar/>
-      
-     
+       <Navbar/>     
         <Routes>
          <Route path='/' element={<Navigate to ='/Home'/>}/>
           <Route path='Home' element={<Home/>}/>
@@ -24,8 +26,8 @@ function App() {
           <Route path='Event' element={<EventHandling/>}/>
           <Route path='State' element={<StateManagement/>}/>
           <Route path='todo' element={<Todo/>}/>
-          
-
+          <Route path='Chat' element={<Chat/>}/>
+          <Route path='Broeser' element={<Browser/>}/>
         </Routes>
       </BrowserRouter>
     </div>
