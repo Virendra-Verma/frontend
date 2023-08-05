@@ -22,9 +22,20 @@ const Browser = () => {
                 </div>
             </div>
         ))
+
+    const filterLaptop=(e)=>{
+        const value = e.target.value;
+        setLaptopList(laptopData.filter((laptop)=>{return laptop.toLowercase().includes(value.toLowercase())}));
+    }
       }
   return (
     <div>
+     <header className='container'>
+        <div className='containet py-5'>
+        <p className='display-2 text-center fw-bold'>Browse Laptop</p>
+        <input type='text' className='form-control w-75 m-auto'/>
+        </div>
+     </header>
      <div className='container'>
         <div className='row'>{displayLaptopData()}</div>
      </div>

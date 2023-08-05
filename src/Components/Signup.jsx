@@ -1,7 +1,11 @@
 import { useFormik } from 'formik';
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Signup = () => {
+  const navigate = useNavigate();
+
    // initializing formik
    const SignupForm = useFormik({
     initialValues: {
@@ -10,11 +14,50 @@ const Signup = () => {
       password: ' '
     },
 
-    onSubmit: (values) => {
+    onSubmit: async(values) => {
       console.log(values);
-      // submit values form 
+
+      //sending request to backend
+      const res = await fetch('http://localhost:5000/user/add',{
+        method:'POST',
+        body:JSON.stringify(values),
+        headers:{
+          'Content-Type':'application/json'
+        }
+      })
+        console.log(res.status);
+
+        if(res.status==200){
+          Swal.fire({
+            icon:'success',
+            title:'Singup success',
+            text:'Now login to Continue'
+
+          });
+          navigate('/login');
+
+        }else{
+          Swal.fire({
+          icon :'error',
+          title :'Oops!!',
+          text :'Some Error Occured'
+        });
+        }
+      
     }
   });
+
+
+
+  const UploadFile = async(e)=>{
+    let file = e.target.files[0];
+    const fd = new FormData();
+    fd.append('myfile',file);
+    const res = await fetch('http://localhost:5000/util/upload',{
+      method: 'Post',
+      body:fd
+    });
+  }
   return (
     <div className="d-flex justify-content-center align-items-center vh-100">
       <div className="card w-25 shadow-lg rounded-5">
@@ -28,6 +71,10 @@ const Signup = () => {
             <input className="form-control mb-4 rounded-5" type="email"  name='email' onChange={SignupForm.handleChange} value={SignupForm.values.email} />
             <label htmlFor="">Password</label>
             <input className="form-control mb-4 rounded-5" type="password"  name='password' onChange={SignupForm.handleChange} value={SignupForm.values.password} />
+
+
+            <label htmlFor=''>Upload File</label>
+            <input type='file'/>
             <button type ="submit" className="btn btn-danger w-100 mt-4 rounded-5">
               Signup
             </button>

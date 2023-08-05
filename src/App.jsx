@@ -8,9 +8,10 @@ import Navbar from './Components/Navbar';
 import EventHandling from './Components/EventHandling';
 import StateManagement from './Components/StateManagement';
 import Todo from './Components/Todo';
-
 import Chat from './Components/Chat';
 import Browser from './Components/Browser';
+import Contact from './Components/Contact';
+
 
 
 function App() {
@@ -27,7 +28,8 @@ function App() {
           <Route path='State' element={<StateManagement/>}/>
           <Route path='todo' element={<Todo/>}/>
           <Route path='Chat' element={<Chat/>}/>
-          <Route path='Broeser' element={<Browser/>}/>
+          <Route path='Browser' element={<Browser/>}/>
+          <Route path='Contact' element={<Contact/>}/>
         </Routes>
       </BrowserRouter>
     </div>
