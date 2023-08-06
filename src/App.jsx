@@ -11,6 +11,8 @@ import Todo from './Components/Todo';
 import Chat from './Components/Chat';
 import Browser from './Components/Browser';
 import Contact from './Components/Contact';
+import UpdateUser from './Components/UpdateUser';
+
 
 
 
@@ -30,6 +32,7 @@ function App() {
           <Route path='Chat' element={<Chat/>}/>
           <Route path='Browser' element={<Browser/>}/>
           <Route path='Contact' element={<Contact/>}/>
+          <Route path='UpdateUser/:id' element={<UpdateUser/>}/>
         </Routes>
       </BrowserRouter>
     </div>
