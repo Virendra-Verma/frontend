@@ -1,13 +1,15 @@
 import { useFormik } from 'formik';
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Signup = () => {
   const navigate = useNavigate();
 
+  const [selImage, setSelImage] = useState(' ');
+
    // initializing formik
-   const SignupForm = useFormik({
+    const SignupForm = useFormik({
     initialValues: {
       name:' ',
       email: ' ',
@@ -15,6 +17,7 @@ const Signup = () => {
     },
 
     onSubmit: async(values) => {
+      values.avatar = selImage;
       console.log(values);
 
       //sending request to backend
@@ -26,16 +29,13 @@ const Signup = () => {
         }
       })
         console.log(res.status);
-
         if(res.status==200){
           Swal.fire({
             icon:'success',
             title:'Singup success',
             text:'Now login to Continue'
-
           });
           navigate('/login');
-
         }else{
           Swal.fire({
           icon :'error',
@@ -46,14 +46,12 @@ const Signup = () => {
       
     }
   });
-
-
-
   const UploadFile = async(e)=>{
     let file = e.target.files[0];
+    setSelImage(file.name);
     const fd = new FormData();
     fd.append('myfile',file);
-    const res = await fetch('http://localhost:5000/util/upload',{
+    const res = await fetch('http://localhost:5000/util/uploadfile',{
       method: 'Post',
       body:fd
     });
@@ -71,10 +69,8 @@ const Signup = () => {
             <input className="form-control mb-4 rounded-5" type="email"  name='email' onChange={SignupForm.handleChange} value={SignupForm.values.email} />
             <label htmlFor="">Password</label>
             <input className="form-control mb-4 rounded-5" type="password"  name='password' onChange={SignupForm.handleChange} value={SignupForm.values.password} />
-
-
             <label htmlFor=''>Upload File</label>
-            <input type='file'/>
+            <input type='file' onChange={UploadFile}/>
             <button type ="submit" className="btn btn-danger w-100 mt-4 rounded-5">
               Signup
             </button>

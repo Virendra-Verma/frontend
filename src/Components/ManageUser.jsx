@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
 const ManageUser = () => {
@@ -15,11 +16,9 @@ const ManageUser = () => {
             setUserList(data);
         }
     };
-
     useEffect(() => {
      fetchUserData();
     }, []);
-
     const DeleteUser =async(id)=>{
         console.log(id);
         const res = await fetch('http://localhost:5000/user/delete/'+id,{method : 'DELETE'})
@@ -37,6 +36,7 @@ const ManageUser = () => {
                     <th>Name</th>
                     <th>Email</th>
                     <th>Password</th>
+                    <th></th>
                     <th></th>
                 </tr>
             </thead>
