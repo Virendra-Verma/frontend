@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import Home from './Components/Home';
 import Login from './Components/Login';
@@ -13,6 +12,8 @@ import Browser from './Components/Browser';
 import Contact from './Components/Contact';
 import ManageUser from './Components/ManageUser';
 import UpdateUser from './Components/UpdateUser';
+import { Toaster } from 'react-hot-toast';
+import { UserProvider } from './UserContext';
 
 
 
@@ -20,7 +21,9 @@ import UpdateUser from './Components/UpdateUser';
 function App() {
   return (
     <div> 
+      <Toaster position='top-center'/>
        <BrowserRouter>
+       <UserProvider>
        <Navbar/>     
         <Routes>
          <Route path='/' element={<Navigate to ='/Home'/>}/>
@@ -36,6 +39,7 @@ function App() {
           <Route path='ManageUser' element={<ManageUser/>}/>
           <Route path='UpdateUser/:id' element={<UpdateUser/>}/>
         </Routes>
+        </UserProvider>
       </BrowserRouter>
     </div>
   );
